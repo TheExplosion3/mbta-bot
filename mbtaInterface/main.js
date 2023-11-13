@@ -1,5 +1,6 @@
 const fortune = require('fortune')
 
+// objects for the system
 const recordTypes = {
     train: {
         name: String,
@@ -22,10 +23,9 @@ const recordTypes = {
         currentNumberOfTrains: Number
     },
 
-    alert: {
+    serviceAlert: {
         alertType: String,
         alertContents: String,
-        line: 'line',
-        
+        line: 'line'
     }
 }
