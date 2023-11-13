@@ -26,6 +26,8 @@ const recordTypes = {
     serviceAlert: {
         alertType: String,
         alertContents: String,
-        line: 'line'
+        line: 'line',
+        timeframe: String,
+        planned: Boolean
     }
 }
