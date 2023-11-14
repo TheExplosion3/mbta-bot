@@ -2,7 +2,18 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
-const { token } = require('./config.json');
+const ipc = require('node-ipc')
+
+const token = process.env.TOKEN;
+
+ipc.config.id = 'discord-bot-process';
+ipc.config.retry = 1500;
+ipc.config.silent = true;
+ipc.connectTo('runner', () => {
+	ipc.of['jest-observer'].on('connect', () => {
+	  ipc.of['jest-observer'].emit('Connection Status', "Connection Successful - Discord");
+	});
+  });
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });

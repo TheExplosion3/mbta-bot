@@ -13,6 +13,9 @@
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
     "fortune": "^5.5.18",
+    "fortune-http": "^1.1.0",
+    "fortune-json-api": "^2.3.0",
+    "node-ipc": "^10.1.0",
     "postgres": "^3.4.3",
     "postgresql": "^0.0.1"
   },
