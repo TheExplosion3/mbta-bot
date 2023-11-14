@@ -12,7 +12,8 @@
   "dependencies": {
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
-    "fortune": "^5.5.18"
+    "fortune": "^5.5.18",
+    "postgres": "^3.4.3"
   },
   "devDependencies": {
     "eslint": "^8.53.0"
