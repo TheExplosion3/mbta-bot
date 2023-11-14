@@ -1,5 +1,10 @@
 const fortune = require('fortune')
 const pgAdapter = require('fortune-postgres')
+const fortuneWS = require('fortune-ws')
+
+import sql from './../database/db.js'
+
+// end imports
 
 // localized storage
 const adapter = [ pgAdapter, {
@@ -54,3 +59,21 @@ const recordTypes = {
         planned: Boolean
     }
 }
+
+
+const options = { port: 1337 }
+const server = fortuneWS(store, (state, changes) => {
+  // Whitelist state changes.
+  if (!changes) return { users: Array.isArray(state.users) ? state.users : [] }
+
+  // Only send new posts from users that are being followed.
+  if (changes[methods.create] && changes[methods.create].post) {
+    const post = state.users ? changes[methods.create].post
+      .filter(post => ~state.users.indexOf(post.author)) : []
+
+    if (post.length) return { [methods.create]: { post } }
+  }
+}, options)
+
+var client = new WebSocket('api-v3.mbta.com/', protocols)
+fortune.net.request(client, options)
